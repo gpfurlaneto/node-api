@@ -1,7 +1,7 @@
 import path from 'path'
 import glob from 'glob'
-import { Application } from "express"
-import { IRoute } from '../types/IRoute'
+import { Application, Request, Response, NextFunction } from "express"
+import { Route } from '../types/Route'
 
 export default (application: Application) => {
   const controllerPaths = glob.sync(
@@ -9,7 +9,25 @@ export default (application: Application) => {
   )
 
   controllerPaths.forEach(controllerPath => {
-    const controller: IRoute = require(controllerPath).default
-    application[controller.method](`/api${controller.url}`, controller.handler)
+    const controller: Route = require(controllerPath).default
+     application[controller.method](`/api${controller.url}`, 
+      controller.handlers.map(handler => async (req: Request, res: Response, next: NextFunction) => {
+        try{
+          await handler(req, res)
+          next()
+        }catch(err){
+          if(err.isApiException){
+            return res.status(err.code).send({
+              code: err.code,
+              message: err.message,
+              details: err.details,
+              isApiException: err.isApiException
+            });
+          }
+
+          throw err
+        }
+      })
+    )
   })
 }
