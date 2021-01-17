@@ -3,7 +3,7 @@ import glob from 'glob'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import { Application } from "express"
-import { IMiddleware } from 'IMiddleware'
+import { Middleware } from 'Middleware'
 
 export default (application: Application) => {
   
@@ -16,7 +16,7 @@ export default (application: Application) => {
   )
 
   middlewarePaths.forEach(middlewarePath => {
-    const middleware: IMiddleware = require(middlewarePath).default
+    const middleware: Middleware = require(middlewarePath).default
     middleware.apply(application)
   })
 }
