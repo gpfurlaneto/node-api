@@ -1,4 +1,4 @@
-import ApiException from "./ApiExceptions";
+import ApiException from "./ApiException";
 
 export default class extends ApiException {
 
