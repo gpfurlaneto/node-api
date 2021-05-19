@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { loginSchema } from "./session.schemas";
 import requestValidator from "../../pre-handlers/request-validator";
+import UserDomain from "../../../lib/domain/UserDomain";
 
 export default {
   method: 'post',
@@ -9,7 +10,9 @@ export default {
     requestValidator(loginSchema),
     async (request: Request, response: Response) => {
       const { username, password } = request.body
-      response.send('Login is in development.')
+      const domain = UserDomain.instance()
+      const result = await domain.login(username, password)
+      response.send(result)
     }
   ]
 }

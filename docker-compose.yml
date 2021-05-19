@@ -5,7 +5,35 @@ services:
     container_name: node-api
     restart: always
     build: .
+    depends_on:
+      - "postgres"
     environment: 
       - PORT=4000 
     ports: 
       - "4000:4000" 
+  postgres:
+    image: "postgres"
+    container_name: node-api-postgres
+    environment: 
+      - POSTGRES_USER=node-api
+      - POSTGRES_PASSWORD=node-api
+      - POSTGRES_DB=node-api
+    ports: 
+      - "5432:5432" 
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+  postgres-test:
+    image: "postgres"
+    container_name: node-api-postgres-test
+    environment: 
+      - POSTGRES_USER=node-api-test
+      - POSTGRES_PASSWORD=node-api-test
+      - POSTGRES_DB=node-api-test
+    ports: 
+      - "5432:5432" 
+    volumes:
+      - database-data-test:/var/lib/postgresql/data/
+
+volumes:
+  database-data:
+  database-data-test:

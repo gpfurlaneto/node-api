@@ -39,6 +39,10 @@ export default (object: any, path: string, name: string, required?: boolean, str
     if(differences.length){
       throw new BadRequest(`${path}: Fields not allowed [${differences}]`)
     }
+
+    if(validationException){
+      throw validationException
+    }
     
   }
 

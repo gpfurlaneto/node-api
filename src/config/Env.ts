@@ -1,9 +1,13 @@
 import dotenv from 'dotenv'
-dotenv.config()
+
+if(process.env.NAME !== 'test'){
+  dotenv.config()
+}
 
 export interface EnvValues {
   PORT: number
-  NAME: string
+  SECRET_JWT: string
+  DATABASE_URL: string
 }
 
 export const checkEnv = () => {
@@ -14,8 +18,9 @@ export const checkEnv = () => {
 }
 
 const Env: EnvValues = {
-  NAME: process.env.NAME || '',
-  PORT: process.env.PORT ? parseInt(process.env.PORT, 10) : 3000,
+  SECRET_JWT: process.env.SECRET_JWT || '',
+  DATABASE_URL: process.env.DATABASE_URL || '',
+  PORT: process.env.PORT ? parseInt(process.env.PORT, 10) : 3000
 }
 
 export default Env
