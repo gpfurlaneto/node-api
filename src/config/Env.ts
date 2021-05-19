@@ -1,5 +1,8 @@
 import dotenv from 'dotenv'
-dotenv.config()
+
+if(process.env.NAME !== 'test'){
+  dotenv.config()
+}
 
 export interface EnvValues {
   PORT: number
