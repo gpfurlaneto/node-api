@@ -40,4 +40,13 @@ export default class UserDomain {
     return bcrypt.hash(password, 10)
   }
 
+  async create(email: string, username: string, password: string) {
+    const newUser = new UserEntity()
+    newUser.email = email
+    newUser.username = username
+    newUser.password = password
+
+    return newUser.save()
+  }
+
 }
