@@ -1,17 +1,19 @@
 import { Request, Response } from "express";
-import { loginSchema } from "./session.schemas";
+import { createUserSchema } from "./users.schemas";
 import requestValidator from "../../pre-handlers/request-validator";
 import UserDomain from "../../../lib/domain/UserDomain";
+import authenticated from "../../pre-handlers/authenticated";
 
 export default {
   method: 'post',
-  url: '/session/login',
+  url: '/users',
   handlers: [
-    requestValidator(loginSchema),
+    authenticated(),
+    requestValidator(createUserSchema),
     async (request: Request, response: Response) => {
-      const { username, password } = request.body
+      const { email, username, password } = request.body
       const domain = UserDomain.instance()
-      const result = await domain.login(username, password)
+      const result = await domain.create(email, username, password)
       response.send(result)
     }
   ]
