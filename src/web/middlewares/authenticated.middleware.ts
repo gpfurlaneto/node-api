@@ -17,3 +17,5 @@ class AuthenticatedMiddleware implements Middleware{
     })
   }
 }
+
+export default new AuthenticatedMiddleware()
