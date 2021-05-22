@@ -13,7 +13,7 @@ export default {
     async (request: Request, response: Response) => {
       const { email, username, password } = request.body
       const domain = UserDomain.instance()
-      const result = await domain.create(email, username, password)
+      const result = await domain.create({email, username, password})
       response.send(result)
     }
   ]

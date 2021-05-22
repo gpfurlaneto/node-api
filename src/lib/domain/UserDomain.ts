@@ -64,7 +64,10 @@ export default class UserDomain {
     newUser.username = userData.username!
     newUser.password = await this.hashPassword(userData.password!)
 
-    return newUser.save()
+    const result: any = await newUser.save()
+    delete result.password
+
+    return result
   }
 
   getAllUsers() {
