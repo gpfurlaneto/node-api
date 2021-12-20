@@ -8,5 +8,10 @@ export default {
   logging: false,
   synchronize: false,
   entities,
-  migrations
+  migrations,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 }
