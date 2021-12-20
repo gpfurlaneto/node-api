@@ -10,13 +10,14 @@ export default (application: Application) => {
 
   controllerPaths.forEach(controllerPath => {
     const controller: Route = require(controllerPath).default
-     application[controller.method](`/api${controller.url}`, 
+    application[controller.method](`/api${controller.url}`,
       controller.handlers.map(handler => async (req: Request, res: Response, next: NextFunction) => {
-        try{
+        try {
           await handler(req, res)
           next()
-        }catch(err){
-          if(err.isApiException){
+        } catch (err) {
+          console.log('AAAAAAAAAAAAAAA', err)
+          if (err.isApiException) {
             return res.status(err.code).send({
               code: err.code,
               message: err.message,
