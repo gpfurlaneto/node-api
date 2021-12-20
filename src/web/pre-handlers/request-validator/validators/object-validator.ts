@@ -7,43 +7,43 @@ export default (object: any, path: string, name: string, required?: boolean, str
   const isNilValue = isNil(value)
   const isNaNValue = isNaN(value)
 
-  if(required && (isNaNValue || isNilValue)){
+  if (required && (isNaNValue || isNilValue)) {
     throw new BadRequest(`${path}: is required`)
   }
 
-  if(!required && (isNaNValue || isNilValue)){
+  if (!required && (isNaNValue || isNilValue)) {
     return
   }
 
-  if(structure){
-    
+  if (structure) {
+
     let validationException = null
-    
-    try{
+
+    try {
       structure.validate(value, `${path}`)
-    }catch(e){
+    } catch (e: any) {
       validationException = e
     }
-    
+
     const currentFields = Object.keys(value)
     const allowedFields = structure.values.map(value => value.name)
     const differences = difference(currentFields, allowedFields)
-    
-    if(differences.length && validationException){
+
+    if (differences.length && validationException) {
       throw new BadRequest([
         ...validationException.details,
-        `${path}: Fields not allowed [${differences}]`    
+        `${path}: Fields not allowed [${differences}]`
       ])
     }
 
-    if(differences.length){
+    if (differences.length) {
       throw new BadRequest(`${path}: Fields not allowed [${differences}]`)
     }
 
-    if(validationException){
+    if (validationException) {
       throw validationException
     }
-    
+
   }
 
 }
