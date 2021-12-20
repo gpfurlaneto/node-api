@@ -15,7 +15,7 @@ export default (application: Application) => {
         try {
           await handler(req, res)
           next()
-        } catch (err) {
+        } catch (err: any) {
           console.log('AAAAAAAAAAAAAAA', err)
           if (err.isApiException) {
             return res.status(err.code).send({
