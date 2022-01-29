@@ -80,10 +80,10 @@ export class ValidatorBuilder {
   validate(object: any, path?: string) {
     let details: string[] = []
     this.values.forEach(value => {
-      try{
+      try {
         value.validate(object, path ? `${path}.${value.name}` : value.name)
-      }catch(e){
-        if(!e.isApiException){
+      } catch (e: any) {
+        if (!e.isApiException) {
           throw e
         }
 
@@ -94,9 +94,9 @@ export class ValidatorBuilder {
       }
     })
 
-    if(details.length){
+    if (details.length) {
       throw new BadRequest(
-      details
+        details
       )
     }
   }
@@ -129,4 +129,4 @@ export default {
   object,
   string,
   date
-} 
+}
