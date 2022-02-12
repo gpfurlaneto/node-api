@@ -13,14 +13,13 @@ export const updateUserSchema = (
     .object(
       'params', true,
       ValidatorBuilder
-        .number('id', true, 100, 101)
+        .number('id', true, 1)
     )
     .object(
       'body', true,
       ValidatorBuilder
         .string('email', false)
         .string('username', false)
-        .string('password', false)
     )
 )
 
