@@ -10,9 +10,9 @@ export default async () => {
   } as PostgresConnectionOptions)
   const migrations = await connection.runMigrations()
 
-  console.info(`Executed Migrations: ${migrations.length ? 
-    migrations.map(migration =>  '[\n  ' + migration.name) + '\n]'
+  console.info(`Executed Migrations: ${migrations.length ?
+    migrations.map(migration => '[\n  ' + migration.name) + '\n]'
     : 'No migrations to run.'}`)
-    
+
   return connection
 };
