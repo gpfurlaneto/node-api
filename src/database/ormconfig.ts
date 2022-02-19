@@ -5,10 +5,11 @@ import Env from '../config/Env';
 const extra =
   Env.ENV_NAME === 'production'
     ? {
-      ssl: {
-        rejectUnauthorized: false,
-      },
-    } : null;
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      }
+    : null;
 
 export default {
   type: 'postgres',
