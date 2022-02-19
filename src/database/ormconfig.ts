@@ -3,13 +3,12 @@ import migrations from './migrations';
 import Env from '../config/Env';
 
 const extra =
-  Env.NODE_ENV === 'test'
-    ? null
-    : {
-        ssl: {
-          rejectUnauthorized: false,
-        },
-      };
+  Env.ENV_NAME === 'production'
+    ? {
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    } : null;
 
 export default {
   type: 'postgres',

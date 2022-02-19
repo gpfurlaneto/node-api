@@ -8,7 +8,7 @@
     "dev": "nodemon src/app.ts",
     "tsc": "tsc",
     "build": "npm-run-all tsc",
-    "test": "NAME=test ts-node-dev test/JestRunner.ts --watch tests",
+    "test": "ts-node-dev test/JestRunner.ts --watch tests",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --fix",
     "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },

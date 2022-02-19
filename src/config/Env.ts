@@ -8,7 +8,7 @@ export interface EnvValues {
   PORT: number;
   SECRET_JWT: string;
   DATABASE_URL: string;
-  NODE_ENV: 'production' | 'test';
+  ENV_NAME: 'production' | 'test' | 'develop';
 }
 
 export const checkEnv = () => {
@@ -22,7 +22,7 @@ const Env: EnvValues = {
   SECRET_JWT: process.env.SECRET_JWT || '',
   DATABASE_URL: process.env.DATABASE_URL || '',
   PORT: process.env.PORT ? parseInt(process.env.PORT, 10) : 3000,
-  NODE_ENV: process.env.NODE_ENV as 'production' | 'test',
+  ENV_NAME: process.env.ENV_NAME as 'production' | 'test',
 };
 
 export default Env;
