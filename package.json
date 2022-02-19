@@ -9,7 +9,7 @@
     "tsc": "tsc",
     "build": "npm-run-all tsc",
     "test": "ts-node-dev test/JestRunner.ts --watch tests",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --fix",
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
     "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint-staged": "lint-staged"
   },
