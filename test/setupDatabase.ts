@@ -1,4 +1,3 @@
-import type { Config } from '@jest/types';
 import { createConnection } from 'typeorm';
 import databaseConfig from '../src/database/ormconfig'
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';

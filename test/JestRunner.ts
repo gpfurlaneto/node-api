@@ -1,9 +1,9 @@
 // import "reflect-metadata";
 import * as jest from 'jest'
 import dotenv from 'dotenv'
-import setupDatabase from './setupDatabase'
+dotenv.config({ path: '.env.test' })
 
-dotenv.config({ path: '.env.test'})
+import setupDatabase from './setupDatabase'
 
 setupDatabase()
   .then(async () => {
