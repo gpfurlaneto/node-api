@@ -9,4 +9,5 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14.17
-      - run: nnpm runarn lint
+      - run: nnpm run install
+      - run: nnpm run lint
