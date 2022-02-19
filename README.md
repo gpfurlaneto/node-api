@@ -22,4 +22,4 @@
     
   ### Running the application on containers
    Run the command:
-    `docker-compose up`
+    `docker-compose up`a
