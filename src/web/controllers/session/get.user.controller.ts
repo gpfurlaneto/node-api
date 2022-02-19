@@ -1,7 +1,5 @@
-import { request, Request, Response } from "express";
-import UserDomain from "../../../lib/domain/UserDomain";
-import authenticated from "../../pre-handlers/authenticated";
-import requestValidator from "../../pre-handlers/request-validator";
+import { Request, Response } from 'express';
+import authenticated from '../../pre-handlers/authenticated';
 
 export default {
   method: 'get',
@@ -9,7 +7,7 @@ export default {
   handlers: [
     authenticated(),
     async (request: Request, response: Response) => {
-      response.send((request as any).user)
-    }
-  ]
-}
+      response.send((request as any).user);
+    },
+  ],
+};

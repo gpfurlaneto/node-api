@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
-import { getUserSchema } from "./users.schemas";
-import UserDomain from "../../../lib/domain/UserDomain";
-import authenticated from "../../pre-handlers/authenticated";
-import requestValidator from "../../pre-handlers/request-validator";
+import { Request, Response } from 'express';
+import { getUserSchema } from './users.schemas';
+import UserDomain from '../../../lib/domain/UserDomain';
+import authenticated from '../../pre-handlers/authenticated';
+import requestValidator from '../../pre-handlers/request-validator';
 
 export default {
   method: 'delete',
@@ -11,10 +11,10 @@ export default {
     authenticated(),
     requestValidator(getUserSchema),
     async (request: Request, response: Response) => {
-      const { id } = request.params
-      const domain = UserDomain.instance()
-      await domain.delete(parseInt(id as string) )
-      response.send('ok')
-    }
-  ]
-}
+      const { id } = request.params;
+      const domain = UserDomain.instance();
+      await domain.delete(parseInt(id as string, 10));
+      response.send('ok');
+    },
+  ],
+};

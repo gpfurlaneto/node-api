@@ -1,10 +1,7 @@
-import { ValidatorBuilder } from "./validators/ValidatorBuilder"
+import { ValidatorBuilder } from './validators/ValidatorBuilder';
 
-export default (validator: ValidatorBuilder) => {
+export default (validator: ValidatorBuilder) => (req: any) => {
+  validator.validate(req);
+};
 
-  return (req: any) => {
-    validator.validate(req)
-  }
-} 
-
-export { default as ValidatorBuilder } from './validators/ValidatorBuilder'
+export { default as ValidatorBuilder } from './validators/ValidatorBuilder';

@@ -1,13 +1,13 @@
 export default class ApiException extends Error {
+  code: number;
 
-  code: number
-  details?: any
-  isApiException: boolean = true
+  details?: any;
 
-  constructor(message: string, code: number, details?: any){
-    super(message)
-    this.code = code
-    this.details = details
+  isApiException: boolean = true;
+
+  constructor(message: string, code: number, details?: any) {
+    super(message);
+    this.code = code;
+    this.details = details;
   }
-
-} 
+}

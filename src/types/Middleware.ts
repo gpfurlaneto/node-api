@@ -1,5 +1,5 @@
-import { Application } from "express";
+import { Application } from 'express';
 
 export interface Middleware {
-  apply: (app: Application) => void
+  apply: (app: Application) => void;
 }

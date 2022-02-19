@@ -1,13 +1,14 @@
-import entities from './entities'
-import migrations from './migrations'
-import Config from '../config/Env'
-import Env from '../config/Env'
+import entities from './entities';
+import migrations from './migrations';
+import Config from '../config/Env';
 
-const extra = Env.NODE_ENV === 'test' ? null : {
-  ssl: {
-    rejectUnauthorized: false,
-  },
-}
+const extra = Config.NODE_ENV === 'test'
+  ? null
+  : {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  };
 
 export default {
   type: 'postgres',
@@ -16,5 +17,5 @@ export default {
   synchronize: false,
   entities,
   migrations,
-  extra
-}
+  extra,
+};
