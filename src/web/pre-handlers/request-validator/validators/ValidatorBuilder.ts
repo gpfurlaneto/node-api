@@ -27,7 +27,8 @@ export class ValidatorBuilder {
     this.values.push({
       name,
       required,
-      validate: (object: any) => numberValidator(object, name, required, min, max),
+      validate: (object: any) =>
+        numberValidator(object, name, required, min, max),
     } as ValueValidator);
     return this;
   }
@@ -37,18 +38,32 @@ export class ValidatorBuilder {
       name,
       required,
       structure,
-      validate: (object: any, path: string) => objectValidator(object, path, name, required, structure),
+      validate: (object: any, path: string) =>
+        objectValidator(object, path, name, required, structure),
     } as ValueValidator);
     return this;
   }
 
-  string(name: string, required?: boolean, minLength?: number, maxLength?: number) {
+  string(
+    name: string,
+    required?: boolean,
+    minLength?: number,
+    maxLength?: number,
+  ) {
     this.values.push({
       name,
       required,
       minLength,
       maxLength,
-      validate: (object: any, path?: string) => stringValidator(object, name, path || '', required, minLength, maxLength),
+      validate: (object: any, path?: string) =>
+        stringValidator(
+          object,
+          name,
+          path || '',
+          required,
+          minLength,
+          maxLength,
+        ),
     } as ValueValidator);
     return this;
   }
@@ -59,7 +74,8 @@ export class ValidatorBuilder {
       required,
       minDate,
       maxDate,
-      validate: (object: any) => dateValidator(object, name, required, minDate, maxDate),
+      validate: (object: any) =>
+        dateValidator(object, name, required, minDate, maxDate),
     } as ValueValidator);
   }
 
@@ -83,15 +99,32 @@ export class ValidatorBuilder {
   }
 }
 
-export const boolean = (name: string, required?: boolean) => new ValidatorBuilder().boolean(name, required);
+export const boolean = (name: string, required?: boolean) =>
+  new ValidatorBuilder().boolean(name, required);
 
-export const number = (name: string, required?: boolean, min?: number, max?: number) => new ValidatorBuilder().number(name, required, min, max);
+export const number = (
+  name: string,
+  required?: boolean,
+  min?: number,
+  max?: number,
+) => new ValidatorBuilder().number(name, required, min, max);
 
-export const object = (name: string, required?: boolean, structure?: any) => new ValidatorBuilder().object(name, required, structure);
+export const object = (name: string, required?: boolean, structure?: any) =>
+  new ValidatorBuilder().object(name, required, structure);
 
-export const string = (name: string, required?: boolean, minLength?: number, maxLength?: number) => new ValidatorBuilder().string(name, required, minLength, maxLength);
+export const string = (
+  name: string,
+  required?: boolean,
+  minLength?: number,
+  maxLength?: number,
+) => new ValidatorBuilder().string(name, required, minLength, maxLength);
 
-export const date = (name: string, required?: boolean, minDate?: Date, maxDate?: Date) => new ValidatorBuilder().date(name, required, minDate, maxDate);
+export const date = (
+  name: string,
+  required?: boolean,
+  minDate?: Date,
+  maxDate?: Date,
+) => new ValidatorBuilder().date(name, required, minDate, maxDate);
 
 export default {
   ValidatorBuilder,

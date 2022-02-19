@@ -14,7 +14,9 @@ export default (application: Application) => {
       extended: true,
     }),
   );
-  const middlewarePaths = glob.sync(path.join(__dirname, './**/*.middleware.@(ts|js)'));
+  const middlewarePaths = glob.sync(
+    path.join(__dirname, './**/*.middleware.@(ts|js)'),
+  );
 
   middlewarePaths.forEach((middlewarePath) => {
     const middleware: Middleware = require(middlewarePath).default;

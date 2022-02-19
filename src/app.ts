@@ -13,11 +13,16 @@ const start = async () => {
 
     const application: Application = express();
 
-    const connection = await createConnection(databaseConfig as PostgresConnectionOptions);
+    const connection = await createConnection(
+      databaseConfig as PostgresConnectionOptions,
+    );
     const migrations = await connection.runMigrations();
 
     console.info(
-      `Executed Migrations: ${migrations.length ? `${migrations.map((migration) => `[\n  ${migration.name}`)}\n]` : 'No migrations to run.'
+      `Executed Migrations: ${
+        migrations.length
+          ? `${migrations.map((migration) => `[\n  ${migration.name}`)}\n]`
+          : 'No migrations to run.'
       }`,
     );
 

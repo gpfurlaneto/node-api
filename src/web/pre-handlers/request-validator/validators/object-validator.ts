@@ -2,7 +2,13 @@ import { isNil, isNaN, difference } from 'lodash';
 import { ValidatorBuilder } from './ValidatorBuilder';
 import BadRequest from '../../../../types/exception/BadRequest';
 
-export default (object: any, path: string, name: string, required?: boolean, structure?: ValidatorBuilder) => {
+export default (
+  object: any,
+  path: string,
+  name: string,
+  required?: boolean,
+  structure?: ValidatorBuilder,
+) => {
   const value = object[name];
   const isNilValue = isNil(value);
   const isNaNValue = isNaN(value);
@@ -25,11 +31,16 @@ export default (object: any, path: string, name: string, required?: boolean, str
     }
 
     const currentFields = Object.keys(value);
-    const allowedFields = structure.values.map((structurevalue) => structurevalue.name);
+    const allowedFields = structure.values.map(
+      (structurevalue) => structurevalue.name,
+    );
     const differences = difference(currentFields, allowedFields);
 
     if (differences.length && validationException) {
-      throw new BadRequest([...validationException.details, `${path}: Fields not allowed [${differences}]`]);
+      throw new BadRequest([
+        ...validationException.details,
+        `${path}: Fields not allowed [${differences}]`,
+      ]);
     }
 
     if (differences.length) {

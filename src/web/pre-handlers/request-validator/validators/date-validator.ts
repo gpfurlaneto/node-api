@@ -1,7 +1,13 @@
 import { isNil, isNaN, isDate } from 'lodash';
 import BadRequest from '../../../../types/exception/BadRequest';
 
-export default (object: any, name: string, required?: boolean, minDate?: Date, maxDate?: Date) => {
+export default (
+  object: any,
+  name: string,
+  required?: boolean,
+  minDate?: Date,
+  maxDate?: Date,
+) => {
   const value: Date = object[name];
   const isNilValue = isNil(value);
   const isNaNValue = isNaN(value);

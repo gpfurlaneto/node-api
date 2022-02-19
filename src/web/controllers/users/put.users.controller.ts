@@ -14,7 +14,11 @@ export default {
       const { id } = request.params;
       const { email, username, password } = request.body;
       const domain = UserDomain.instance();
-      const user = await domain.update(parseInt(id, 10), { email, username, password });
+      const user = await domain.update(parseInt(id, 10), {
+        email,
+        username,
+        password,
+      });
       response.send(user);
     },
   ],

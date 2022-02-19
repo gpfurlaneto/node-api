@@ -9,7 +9,7 @@ import NotFoundException from '../../types/exception/NotFoundException';
 import DuplicatedException from '../../types/exception/DuplicatedException';
 
 export default class UserDomain {
-  private constructor() { }
+  private constructor() {}
 
   static instance() {
     return new UserDomain();

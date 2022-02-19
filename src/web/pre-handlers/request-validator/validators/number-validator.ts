@@ -1,7 +1,13 @@
 import { isNaN, isNil } from 'lodash';
 import BadRequest from '../../../../types/exception/BadRequest';
 
-export default (object: any, name: string, required?: boolean, min?: number, max?: number) => {
+export default (
+  object: any,
+  name: string,
+  required?: boolean,
+  min?: number,
+  max?: number,
+) => {
   let value = object[name];
 
   if (required && (isNaN(value) || isNil(value))) {
