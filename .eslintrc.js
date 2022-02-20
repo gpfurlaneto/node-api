@@ -20,7 +20,6 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'linebreak-style': ['error', 'unix'],
-    indent: ['error', 2, { SwitchCase: 1 }],
     'global-require': 0,
     'import/no-dynamic-require': 0,
     'no-object-literal-type-assertion': 0,
